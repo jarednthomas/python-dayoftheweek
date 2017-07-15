@@ -29,6 +29,22 @@ value_month = {
 	11:3,
 	12:5,
 }
+
+length_month = {
+	1:31,
+	2:28,
+	3:31,
+	4:30,
+	5:31,
+	6:30,
+	7:31,
+	8:31,
+	9:30,
+	10:31,
+	11:30,
+	12:31,
+}
+
 # century values
 value_century = {
 	17:4,
@@ -42,16 +58,18 @@ value_century = {
 }
 
 # promt user for mm/dd/ccyy
-while given_month < 1:
+while given_month not in range(1,13):
 	given_month = input("What month?(1-12) ")
 
-while given_day < 1:
+while given_day not in range(1,length_month[given_month]+1):
 	given_day = input("What day?  (1-31) ")
 
-while given_year < 1:
+while given_year < 1750:
 	given_year = input("What year? (ccyy) ")
 
 print ""
+print " %s / %s / %s" % (given_month, given_day, given_year)
+
 # calc value of day / reduce
 value_day = given_day % 7
 
@@ -70,7 +88,7 @@ value_yy = (yy + yy_div4) % 7
 
 # consider leap_mm and leap_yy
 value_ly = 0
-
+print ""
 if given_month < 3:
 	print "is within range of leap months"
 	if given_year % 4 == 0:
@@ -95,19 +113,24 @@ else:
 	print "leap not need be considered"
 
 # calc total
-print ""
 total = 0
-total += value_day
-print "total is %s after adding in day" % total
+value_year = (value_cc + value_yy + value_ly)
 total += value_mm
-print "total is %s after adding in month" % total
-total += value_cc
-print "total is %s after adding in cc" % total
-total += value_yy
-print "total is %s after adding in yy" % total
-total += value_ly
-print "total is %s after adding in ly" % total
+total += value_day
+total += value_year
+
 print ""
+print " %s + %s + %s = %s" % (value_mm, value_day, value_year, total)
+print ""
+
+
+""" for debugging
+print "total is %s after adding in day" % total
+print "total is %s after adding in month" % total
+print "total is %s after adding in cc" % total
+print "total is %s after adding in yy" % total
+print "total is %s after adding in ly" % total
+"""
 
 # final_total
 final_total = total
