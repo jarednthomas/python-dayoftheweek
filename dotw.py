@@ -67,62 +67,67 @@ while given_day not in range(1,length_month[given_month]+1):
 while given_year < 1750:
 	given_year = input("What year? (ccyy) ")
 
-print ""
-print " %s / %s / %s" % (given_month, given_day, given_year)
+print "\n" + " %s / %s / %s" % (given_month, given_day, given_year)
 
-# calc value of day / reduce
+
+# value_day / reduce
 value_day = given_day % 7
-
-# ---- value of month is returned with dict
+# value_mm is returned from dict reference
 value_mm = value_month[given_month]
 
-# calc value of cc using dict
+
+# value_cc for part of year
 year = str(given_year)
 cc = int(year[:2])
 yy = int(year[2:])
 value_cc = value_century[cc]
 
-# calc value of yy using formula (yy + (yy div 4)) mod 7
+# value_yy using formula (yy + (yy div 4)) mod 7
 yy_div4  = yy / 4
 value_yy = (yy + yy_div4) % 7
 
 # consider leap_mm and leap_yy
+is_LeapYear = False
 value_ly = 0
-print ""
 if given_month < 3:
-	print "is within range of leap months"
+	# print "is within range of leap months"
 	if given_year % 4 == 0:
-		print "is divisible by four"
+		# print "is divisible by four"
 		if given_year % 100 == 0:
-			print "is divisible by 100"
+			# print "is divisible by 100"
 			if given_year % 400 == 0:
-				print "is divisible by 400"
-				print "is leap year!"
+				# print "is divisible by 400"
+				# print "is leap year!"
 				value_ly = -1
+				is_LeapYear = True
 			else:
-				print "is not divisibile by 400"
-				print "is not leap year"
+				# print "is NOT divisibile by 400"
+				# print "is NOT leap year"
+				is_LeapYear = False
 		else:
-			print "is not divisible by 100"
-			print "is leap year!"
+			# print "is NOT divisible by 100"
+			# print "is leap year!"
 			value_ly = -1
+			is_LeapYear = True
 	else:
-		print "is NOT leap year"
+		#print "is NOT leap year"
+		is_LeapYear = False
 else:
-	print "is NOT within range of leap months"
-	print "leap not need be considered"
+	# print "is NOT within range of leap months"
+	# print "leap not need be considered"
+	is_LeapYear = False
 
-# calc total
-total = 0
+# value_year of using yy, cc and ly
 value_year = (value_cc + value_yy + value_ly)
+
+# total
+total = 0
 total += value_mm
 total += value_day
 total += value_year
 
-print ""
+# user side math
 print " %s + %s + %s = %s" % (value_mm, value_day, value_year, total)
-print ""
-
 
 """ for debugging
 print "total is %s after adding in day" % total
@@ -139,5 +144,5 @@ if final_total > 6:
 	final_total = final_total % 7
 
 day = day_of_week[final_total]
-print "%s returns" % final_total
+print "\n" + "%s returns" % final_total
 print "%s" % day
