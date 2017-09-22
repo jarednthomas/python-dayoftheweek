@@ -1,4 +1,4 @@
-# init date at 0s
+# init date at 0
 given_day   = 0
 given_month = 0
 given_year  = 0
@@ -69,12 +69,10 @@ while given_year < 1750:
 
 print "\n" + " %s / %s / %s" % (given_month, given_day, given_year)
 
-
 # value_day / reduce
 value_day = given_day % 7
 # value_mm is returned from dict reference
 value_mm = value_month[given_month]
-
 
 # value_cc for part of year
 year = str(given_year)
@@ -90,31 +88,30 @@ value_yy = (yy + yy_div4) % 7
 is_LeapYear = False
 value_ly = 0
 if given_month < 3:
-	# print "is within range of leap months"
+	# is within range of leap months
 	if given_year % 4 == 0:
-		# print "is divisible by four"
+		# is divisible by four
 		if given_year % 100 == 0:
-			# print "is divisible by 100"
+			# is divisible by 100
 			if given_year % 400 == 0:
-				# print "is divisible by 400"
-				# print "is leap year!"
+				# is divisible by 400
+				# is leap year
 				value_ly = -1
 				is_LeapYear = True
 			else:
-				# print "is NOT divisibile by 400"
-				# print "is NOT leap year"
+				# is NOT divisibile by 400
+				# is NOT leap year
 				is_LeapYear = False
 		else:
-			# print "is NOT divisible by 100"
-			# print "is leap year!"
+			# is NOT divisible by 100
+			# is leap year
 			value_ly = -1
 			is_LeapYear = True
 	else:
-		#print "is NOT leap year"
+		# is NOT leap year
 		is_LeapYear = False
 else:
-	# print "is NOT within range of leap months"
-	# print "leap not need be considered"
+	# is NOT within range of leap months
 	is_LeapYear = False
 
 # value_year of using yy, cc and ly
@@ -127,15 +124,7 @@ total += value_day
 total += value_year
 
 # user side math
-print " %s + %s + %s = %s" % (value_mm, value_day, value_year, total)
-
-""" for debugging
-print "total is %s after adding in day" % total
-print "total is %s after adding in month" % total
-print "total is %s after adding in cc" % total
-print "total is %s after adding in yy" % total
-print "total is %s after adding in ly" % total
-"""
+# print " %s +  %s +    %s = %s" % (value_mm, value_day, value_year, total)
 
 # final_total
 final_total = total
@@ -144,5 +133,5 @@ if final_total > 6:
 	final_total = final_total % 7
 
 day = day_of_week[final_total]
-print "\n" + "%s returns" % final_total
-print "%s" % day
+#print "\n" + "%s returns" % final_total
+print "was a %s" % day
