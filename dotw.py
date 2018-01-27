@@ -64,13 +64,13 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 
 	# Promt user for mm/dd/ccyy within the range of the Gregorian Calendar
 	while given_month not in range(1,13):
-		given_month = int(input("What month?(1-12) "))
+		given_month = int(input("What month?(1-12): "))
 
 	while given_day not in range(1,(length_month[given_month]+1)):
-		given_day = int(input("What day?  (1-31) "))
+		given_day = int(input("What day?  (1-31): "))
 
 	while given_year < 1750:
-		given_year = int(input("What year? (ccyy) "))
+		given_year = int(input("What year? (ccyy): "))
 
 	value_day = given_day % 7
 	value_mm = value_month[given_month]
@@ -125,5 +125,4 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 	return day
 
 if __name__=="__main__":
-	day = calc_dotw()
-	print("\n{}\n".format(day))
+	print("\n{}\n".format(calc_dotw()))
