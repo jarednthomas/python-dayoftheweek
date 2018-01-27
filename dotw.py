@@ -2,7 +2,7 @@
 """
 dotw.py
 ~~~~~~~
-Python based calculator that determines the weekday of a given day
+Python function that returns the day of the week in the Gregorian Calendar given the Month, Day, and Year
 Credit: https://blog.artofmemory.com/how-to-calculate-the-day-of-the-week-4203.html
 """
 
