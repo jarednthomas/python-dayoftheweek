@@ -125,5 +125,5 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 	return day
 
 if __name__=="__main__":
-	day = calc_dotw(1,1,1990)
+	day = calc_dotw()
 	print("\n{}\n".format(day))

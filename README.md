@@ -1,10 +1,15 @@
-# dotw 
+# dotw.py 
 
-Day of the Week Calculator
+[Python] Day of the Week Calculator
 
-Given a day, month, and year, this program will use an algorithm to figure out the day of the week in the Gregorian Calendar.
+Python function that returns the day of the week in the Gregorian Calendar given the Month, Day, and Year
 
-usage:
+examples:
 
+calc_dotw(1,1,1990)
 
+> monday
 
+calc_dotw(1,31,1990)
+
+> wednesday
