@@ -8,7 +8,6 @@ Credit: https://blog.artofmemory.com/how-to-calculate-the-day-of-the-week-4203.h
 
 def calc_dotw(given_month=0,given_day=0,given_year=1749):
 	""" Function that returns the day of the week given (mm,dd,ccyy) """
-
 	day_of_week = {
 		0:'sunday',
 		1:'monday',
@@ -18,7 +17,6 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 		5:'friday',
 		6:'saturday',
 	}
-
 	value_month = {
 		1:0,
 		2:3,
@@ -33,7 +31,6 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 		11:3,
 		12:5,
 	}
-
 	length_month = {
 		1:31,
 		2:29,
@@ -48,7 +45,6 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 		11:30,
 		12:31,
 	}
-
 	value_century = {
 		17:4,
 		18:2,
@@ -59,8 +55,6 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 		23:0,
 		24:6,
 	}
-
-	# Promt user for mm/dd/ccyy within the range of the Gregorian Calendar
 	while given_month not in range(1,13):
 		given_month = int(input("What month?(1-12): "))
 	while given_day not in range(1,(length_month[given_month]+1)):
@@ -72,14 +66,10 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 	value_mm = value_month[given_month]
 	year = str(given_year)
 
-	cc = int(year[:2]) # Century Code value_cc for part of year
-	value_cc = value_century[cc]
+	value_cc = value_century[int(year[:2])]
+	value_yy = (int(year[2:]) + (int(year[2:]) // 4)) % 7
 
-	yy = int(year[2:]) # Year Code value_yy using formula (yy + (yy div 4)) mod 7
-	yy_div4  = yy // 4
-	value_yy = (yy + yy_div4) % 7
-
-	is_LeapYear = False # Consider leap_mm and leap_yy
+	is_LeapYear = False
 	value_ly = 0
 	if given_month < 3:
 		if given_year % 4 == 0:
@@ -97,7 +87,6 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 	else:
 		is_LeapYear = False
 
-	total = 0
 	value_year = (value_cc + value_yy + value_ly)
 	total = value_mm + value_day + value_year
 
@@ -105,7 +94,6 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 		total = total % 7
 	day = day_of_week[total]
 	return day
-
 
 if __name__=="__main__":
 	print("\n{}\n".format(calc_dotw(1,29,1993)))
