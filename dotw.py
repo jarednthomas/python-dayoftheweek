@@ -55,7 +55,7 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 		23:0,
 		24:6,
 	}
-	
+
 	while given_month not in range(1,13):
 		given_month = int(input("What month?(1-12): "))
 	while given_day not in range(1,(length_month[given_month]+1)):
@@ -63,7 +63,7 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 	while given_year < 1750:
 		given_year = int(input("What year? (ccyy): "))
 
-	value_day = given_day % 7
+	value_dd = given_day % 7
 	value_mm = value_month[given_month]
 	value_cc = value_century[int(str(given_year)[:2])]
 	value_yy = (int(str(given_year)[2:]) + (int(str(given_year)[2:]) // 4)) % 7
@@ -87,7 +87,7 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 		is_LeapYear = False
 
 	value_year = (value_cc + value_yy + value_ly)
-	total = value_mm + value_day + value_year
+	total = value_mm + value_dd + value_year
 
 	if total > 6:
 		total = total % 7
@@ -95,4 +95,4 @@ def calc_dotw(given_month=0,given_day=0,given_year=1749):
 	return day
 
 if __name__=="__main__":
-	print("\n{}\n".format(calc_dotw(1,29,1993)))
+	print("\n{}\n".format(calc_dotw()))
